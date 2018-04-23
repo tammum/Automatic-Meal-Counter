@@ -92,14 +92,16 @@ public class Main extends javax.swing.JFrame {
         //when adminLogin button is pressed then admin login frame comes
         adminLogin adminloginform = new adminLogin();
         adminloginform.setVisible(true);
+        adminloginform.setLocation(450,150);
         this.dispose();
     }//GEN-LAST:event_adminLoginActionPerformed
 
     private void memberLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memberLoginActionPerformed
         // TODO add your handling code here:
         //going to the member section area
-        MemberSection membersection = new MemberSection();
-        membersection.setVisible(true);
+        memberLogin memberlogin = new memberLogin();
+        memberlogin.setVisible(true);
+        memberlogin.setLocation(450,150);
         this.dispose();
     }//GEN-LAST:event_memberLoginActionPerformed
 
@@ -133,7 +135,10 @@ public class Main extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Main().setVisible(true);
+               Main p=new Main();
+               p.setVisible(true);
+               p.setLocation(450,150);
+                
             }
         });
     }

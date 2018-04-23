@@ -34,6 +34,7 @@ public class adminLogin extends javax.swing.JFrame {
         AdminPasswordLabel = new javax.swing.JLabel();
         AdminUserNameTextBox = new javax.swing.JTextField();
         AdminPasswordTextBox = new javax.swing.JTextField();
+        BackToMain = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,6 +49,13 @@ public class adminLogin extends javax.swing.JFrame {
 
         AdminPasswordLabel.setText("Password :");
 
+        BackToMain.setText("Back");
+        BackToMain.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackToMainActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -59,13 +67,16 @@ public class adminLogin extends javax.swing.JFrame {
                         .addComponent(adminLogOk, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(AdminUserNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
-                            .addComponent(AdminPasswordLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(AdminUserNameTextBox)
-                            .addComponent(AdminPasswordTextBox, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(BackToMain)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(AdminUserNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                                    .addComponent(AdminPasswordLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(AdminUserNameTextBox)
+                                    .addComponent(AdminPasswordTextBox, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE))))))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -81,7 +92,9 @@ public class adminLogin extends javax.swing.JFrame {
                     .addComponent(AdminPasswordTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(adminLogOk, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80))
+                .addGap(38, 38, 38)
+                .addComponent(BackToMain)
+                .addGap(19, 19, 19))
         );
 
         pack();
@@ -95,6 +108,7 @@ public class adminLogin extends javax.swing.JFrame {
         if(adminusername.equals("admin") && adminpassword.equals("admin")){
             AdminSection adminsection = new AdminSection();
             adminsection.setVisible(true);
+            adminsection.setLocation(450,150);
             this.dispose();
         }
         else{
@@ -104,6 +118,15 @@ public class adminLogin extends javax.swing.JFrame {
            
         }
     }//GEN-LAST:event_adminLogOkActionPerformed
+
+    private void BackToMainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToMainActionPerformed
+        // TODO add your handling code here:
+        //back to main frame
+        Main main = new Main();
+        main.setVisible(true);
+        main.setLocation(450,150);
+        this.dispose();
+    }//GEN-LAST:event_BackToMainActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,6 +168,7 @@ public class adminLogin extends javax.swing.JFrame {
     private javax.swing.JTextField AdminPasswordTextBox;
     private javax.swing.JLabel AdminUserNameLabel;
     private javax.swing.JTextField AdminUserNameTextBox;
+    private javax.swing.JButton BackToMain;
     private javax.swing.JButton adminLogOk;
     // End of variables declaration//GEN-END:variables
 }

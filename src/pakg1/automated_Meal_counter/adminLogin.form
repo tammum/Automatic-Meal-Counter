@@ -31,14 +31,19 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="AdminUserNameLabel" pref="92" max="32767" attributes="0"/>
-                          <Component id="AdminPasswordLabel" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="AdminUserNameTextBox" max="32767" attributes="0"/>
-                          <Component id="AdminPasswordTextBox" pref="257" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="BackToMain" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="AdminUserNameLabel" pref="92" max="32767" attributes="0"/>
+                                  <Component id="AdminPasswordLabel" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="AdminUserNameTextBox" max="32767" attributes="0"/>
+                                  <Component id="AdminPasswordTextBox" pref="257" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
@@ -61,7 +66,9 @@
               </Group>
               <EmptySpace pref="38" max="32767" attributes="0"/>
               <Component id="adminLogOk" min="-2" pref="65" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+              <Component id="BackToMain" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -88,6 +95,14 @@
     <Component class="javax.swing.JTextField" name="AdminUserNameTextBox">
     </Component>
     <Component class="javax.swing.JTextField" name="AdminPasswordTextBox">
+    </Component>
+    <Component class="javax.swing.JButton" name="BackToMain">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Back"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BackToMainActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

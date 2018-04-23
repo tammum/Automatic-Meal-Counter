@@ -9,11 +9,19 @@ package pakg1.automated_Meal_counter;
  *
  * @author Tammum Islam
  */
+import java.sql.*;
+import javax.swing.*;
+
 public class MemberSection extends javax.swing.JFrame {
 
     /**
      * Creates new form MemberSection
      */
+    Connection conn = null;
+    CallableStatement cs = null;
+    ResultSet rs = null;
+    PreparedStatement ps=null;
+    String userid ;
     public MemberSection() {
         initComponents();
     }
@@ -29,6 +37,9 @@ public class MemberSection extends javax.swing.JFrame {
 
         jTextField1 = new javax.swing.JTextField();
         MemberShowButton = new javax.swing.JButton();
+        GoToMemberLogin = new javax.swing.JButton();
+        OutputTextBox = new javax.swing.JTextField();
+        Output2TextBox = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,28 +53,47 @@ public class MemberSection extends javax.swing.JFrame {
             }
         });
 
+        GoToMemberLogin.setText("Logout");
+        GoToMemberLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GoToMemberLoginActionPerformed(evt);
+            }
+        });
+
+        OutputTextBox.setEditable(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addComponent(MemberShowButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
+                .addComponent(GoToMemberLogin)
+                .addGap(38, 38, 38))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(156, 156, 156)
-                        .addComponent(MemberShowButton)))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
+                    .addComponent(OutputTextBox)
+                    .addComponent(Output2TextBox))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 235, Short.MAX_VALUE)
-                .addComponent(MemberShowButton)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(OutputTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(Output2TextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(GoToMemberLogin)
+                    .addComponent(MemberShowButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10))
         );
 
         pack();
@@ -72,8 +102,51 @@ public class MemberSection extends javax.swing.JFrame {
     private void MemberShowButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MemberShowButtonActionPerformed
         // TODO add your handling code here:
         //showing the data to the members
-        
+        try{
+            OutputTextBox.setText("your id: "+userid);
+             conn = databaseConnection.getConnection();
+             //JOptionPane.showMessageDialog(this, "connection success");
+             cs = conn.prepareCall("call updateCostsummary(?)");
+             //JOptionPane.showMessageDialog(this, "preparecall success");
+             cs.setString(1,userid);
+             //JOptionPane.showMessageDialog(this, "parameter success");
+             rs = cs.executeQuery();
+             
+             ps = conn.prepareStatement("select totalmeal,credit from costsummary where id_number=?");
+             ps.setString(1, userid);
+             rs = ps.executeQuery();
+             //JOptionPane.showMessageDialog(this, "execution success");
+             while(rs.next()){
+              int credit = rs.getInt("credit");
+             int totalmeal = rs.getInt("totalmeal");
+             Output2TextBox.setText("your credit: "+String.valueOf(credit)+" total meal: "+String.valueOf(totalmeal));
+             //JOptionPane.showMessageDialog(this, "execution success");
+             }
+      }
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(this, "something went wrong");
+        }
+       finally{
+            try{
+                rs.close();
+                cs.close();
+                ps.close();
+                conn.close();
+            }
+            catch(SQLException e){
+            JOptionPane.showMessageDialog(this, "something went wrong");
+        }
+        }
     }//GEN-LAST:event_MemberShowButtonActionPerformed
+
+    private void GoToMemberLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GoToMemberLoginActionPerformed
+        // TODO add your handling code here:
+        //login out 
+        memberLogin mlogin = new memberLogin();
+        mlogin.setVisible(true);
+        mlogin.setLocation(450,150);
+        this.dispose();
+    }//GEN-LAST:event_GoToMemberLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -111,7 +184,10 @@ public class MemberSection extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton GoToMemberLogin;
     private javax.swing.JButton MemberShowButton;
+    private javax.swing.JTextField Output2TextBox;
+    private javax.swing.JTextField OutputTextBox;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

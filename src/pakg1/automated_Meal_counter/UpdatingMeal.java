@@ -131,6 +131,7 @@ public class UpdatingMeal extends javax.swing.JFrame {
         //going back to adminsection
          AdminSection adminsection = new AdminSection();
         adminsection.setVisible(true);
+        adminsection.setLocation(450,150);
         this.dispose();
     }//GEN-LAST:event_gotoUpdateMealActionPerformed
 

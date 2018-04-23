@@ -34,6 +34,8 @@ public class AdminSection extends javax.swing.JFrame {
         MealUpdateButton = new javax.swing.JButton();
         MemberDeleteButton = new javax.swing.JButton();
         AdminLogoutButton = new javax.swing.JButton();
+        CostAddingButton = new javax.swing.JButton();
+        PaymentAddingButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,39 +70,54 @@ public class AdminSection extends javax.swing.JFrame {
             }
         });
 
+        CostAddingButton.setText("Cost Adding");
+        CostAddingButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CostAddingButtonActionPerformed(evt);
+            }
+        });
+
+        PaymentAddingButton.setText("Payment Adding");
+        PaymentAddingButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PaymentAddingButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(AdminLogoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(MemberDeleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                .addComponent(MealUpdateButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(MemberAddButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(PaymentAddingButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(CostAddingButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(AdminLogoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                        .addComponent(MemberDeleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                        .addComponent(MealUpdateButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(MemberAddButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(MemberAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(MealUpdateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(MemberDeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(MemberAddButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(MealUpdateButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(MemberDeleteButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(CostAddingButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(PaymentAddingButton)
                 .addGap(18, 18, 18)
                 .addComponent(AdminLogoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(54, 54, 54))
         );
 
         pack();
@@ -112,6 +129,7 @@ public class AdminSection extends javax.swing.JFrame {
         this.dispose();
         adminLogin adminlogin = new adminLogin();
         adminlogin.setVisible(true);
+        adminlogin.setLocation(450,150);
     }//GEN-LAST:event_AdminLogoutButtonActionPerformed
 
     private void MemberAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MemberAddButtonActionPerformed
@@ -120,6 +138,7 @@ public class AdminSection extends javax.swing.JFrame {
        //loading the member adding form
        AddingMembers addmemberform = new AddingMembers();
        addmemberform.setVisible(true);
+       addmemberform.setLocation(450,150);
        this.dispose();
     }//GEN-LAST:event_MemberAddButtonActionPerformed
 
@@ -128,6 +147,7 @@ public class AdminSection extends javax.swing.JFrame {
         //updating meal and calling the update meal form
         UpdatingMeal updatemealform = new UpdatingMeal();
        updatemealform.setVisible(true);
+       updatemealform.setLocation(450,150);
        this.dispose();
     }//GEN-LAST:event_MealUpdateButtonActionPerformed
 
@@ -136,8 +156,27 @@ public class AdminSection extends javax.swing.JFrame {
         //calling to deleting frame
         DeletingMembers deletemember = new DeletingMembers();
         deletemember.setVisible(true);
+        deletemember.setLocation(450,150);
         this.dispose();
     }//GEN-LAST:event_MemberDeleteButtonActionPerformed
+
+    private void CostAddingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CostAddingButtonActionPerformed
+        // TODO add your handling code here:
+        //going to costAdding frame to add cost
+        costAdding costadding = new costAdding();
+        costadding.setVisible(true);
+        costadding.setLocation(450,150);
+        this.dispose();
+    }//GEN-LAST:event_CostAddingButtonActionPerformed
+
+    private void PaymentAddingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PaymentAddingButtonActionPerformed
+        // TODO add your handling code here:
+        //goint to payment seciton for updating payment
+        PaymentAdding payadd = new PaymentAdding();
+        payadd.setVisible(true);
+        payadd.setLocation(450,150);
+        this.dispose();
+    }//GEN-LAST:event_PaymentAddingButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,9 +215,11 @@ public class AdminSection extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AdminLogoutButton;
+    private javax.swing.JButton CostAddingButton;
     private javax.swing.JButton MealUpdateButton;
     private javax.swing.JButton MemberAddButton;
     private javax.swing.JButton MemberDeleteButton;
+    private javax.swing.JButton PaymentAddingButton;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

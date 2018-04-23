@@ -139,6 +139,7 @@ public class AddingMembers extends javax.swing.JFrame {
         //going back to admin section
         AdminSection adminsection = new AdminSection();
         adminsection.setVisible(true);
+        adminsection.setLocation(450,150);
         this.dispose();
     }//GEN-LAST:event_AddtoAdminSectionActionPerformed
 
